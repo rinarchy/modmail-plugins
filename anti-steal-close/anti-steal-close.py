@@ -15,7 +15,7 @@ class AntiStealClosePlugin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["asc", "notclosedbyme", "antisteal", "anti-steal"])
+    @commands.command(aliases=["asc", "dc"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def anti_steal_close(
@@ -60,7 +60,7 @@ class AntiStealClosePlugin(commands.Cog):
             await self.send_scheduled_close_message(ctx, after, silent)
 
         dupe_message = ctx.message
-        dupe_message.content = f"[Anti Close Steal] The thread close command was invoked by {ctx.author.name}#{ctx.author.discriminator}"
+        dupe_message.content = f"[Delegated Close] The thread close command was invoked by {ctx.author.name}#{ctx.author.discriminator}"
 
         await thread.note(dupe_message)
 
